@@ -1,16 +1,21 @@
-export const Users = {
-  Email: 'hsh5x@soscandia.org',
-  Password: 'Test@123',
+export const BaseURL = 'https://pata-app.net/';
 
-  Login: async (page) => {
-    await page.goto('https://pata-app.net/');
-    await page.locator('button[class="sc-eVCCQc euCJGb"]').click();
-    await page.locator('input[class="sc-hUPhBQ gJotik"]').fill(Users.Email);
+const userLogin = async (page, email, password) => {
+    await page.goto(BaseURL);
+    await page.getByRole('button', { name: 'Login/Sign Up' }).click();
+    await page.getByRole('textbox', { name: 'Email' }).fill(email);
     await page.locator('label span').click();
-    await page.locator('button[class="sc-hARSoJ foAIuU"]').click();
-    await page.getByLabel('Password').click();
-    await page.locator('input[name="password"]').fill(Users.Password);
-    await page.locator('form.sc-jyqoAZ.FSnFX').click();
-    await page.getByText('Continue', { exact: true }).click();
-  },
+    await page.getByRole('button', { name: 'Continue', exact: true }).click();
+    await page.getByRole('textbox', { name: 'Password' }).click();
+    await page.getByRole('textbox', { name: 'Password' }).fill(password);
+    await page.locator('form:visible').click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.getByRole('banner').getByRole('button').click();
+    await page.getByRole('link', { name: 'My Account' }).click();
+};
+
+export const Users = {
+    Email: 'hsh5x@soscandia.org',
+    Password: 'Test@123',
+    UserLogin: (page) => userLogin(page, Users.Email, Users.Password)
 };

@@ -1,36 +1,23 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
 export default defineConfig({
-  testDir: './tests',
   fullyParallel: false,
   reporter: [['html', { open: 'always' }]],
   use: {
     trace: 'on',
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: 'Partners',
+      testDir: './tests/Partners',
       use: { ...devices['Desktop Chrome'] },
     },
-    /*
-        {
-          name: 'firefox',
-          use: { ...devices['Desktop Firefox'] },
-        },
-    
-        {
-          name: 'webkit',
-          use: { ...devices['Desktop Safari'] },
-        },
-    
-      ]
-    */
+    {
+      name: 'Users',
+      testDir: './tests/Users',
+      use: { ...devices['Desktop Chrome'] },
+    },
   ]
 });
-
