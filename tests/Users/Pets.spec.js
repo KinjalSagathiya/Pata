@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Users } from './Accounts.js';
 
 const pets = [
-  { PetName: 'Bob', PetType: 'Cat', PetBreed: 'Bombay' }
+  { PetName: 'Lilly', PetType: 'Cat', PetBreed: 'Bombay' }
 ];
 
 const PetDOB = { year: '2024', month: '8', day: '12' };
@@ -44,7 +44,6 @@ test('Verification of Add pet and pet data in the list', async ({ page }) => {
   await page.locator('div').filter({ hasText: /^Select\.\.\.$/ }).nth(1).click();
   await page.getByRole('option', { name: 'Not known' }).click();
   await page.getByRole('button', { name: 'Next' }).click();
-  await page.pause();
   // Behaviors
   await page.getByRole('combobox').nth(0).click();
   await page.getByRole('option', { name: 'Biting' }).click();
