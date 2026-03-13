@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { PayAccount, NoPayAccount } from './PartnerAccounts';
+import { PayAccount, NoPayAccount } from './PartnerAccounts.js'
 
 test.describe('Partner Login Tests', () => {
 

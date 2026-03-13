@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 
 export const BaseURL = 'https://partners.pata-app.net/';
 
-const partnerLogin = async (page, email, password) => {
+export const partnerLogin = async (page, email, password) => {
     await page.goto(`${BaseURL}login`);
     await page.getByRole('textbox', { name: 'Email' }).click();
     await page.getByRole('textbox', { name: 'Email' }).fill(email);
@@ -10,7 +10,7 @@ const partnerLogin = async (page, email, password) => {
     await page.getByRole('textbox', { name: 'Password' }).click();
     await page.getByRole('textbox', { name: 'Password' }).fill(password);
     await page.getByRole('button', { name: 'Login' }).click();
-    await page.waitForURL(/https:\/\/partners\.pata-app\.net\/dashboard/);
+    await page.waitForURL(`${BaseURL}dashboard`);
 };
 
 export const PayAccount = {

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "playwright test",
-    "report": "playwright show-report"
+    "test": "npx playwright test",
+    "report": "npx playwright show-report"
   },
   "keywords": [],
   "author": "",

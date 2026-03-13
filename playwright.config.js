@@ -1,23 +1,17 @@
-// @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
+  testDir: './tests',
   fullyParallel: false,
   reporter: [['html', { open: 'always' }]],
+  timeout: 60000,
   use: {
     trace: 'on',
   },
-
   projects: [
     {
-      name: 'Partners',
-      testDir: './tests/Partners',
+      name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'Users',
-      testDir: './tests/Users',
-      use: { ...devices['Desktop Chrome'] },
-    },
-  ]
+  ],
 });
